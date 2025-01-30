@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Actions\GenerateAuthCodeAction;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -16,25 +17,24 @@ class User extends Authenticatable
 
     protected $guarded = ['id'];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
-     */
     protected $hidden = [
         'remember_token',
     ];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
+    protected $appends = ['full_name'];
+
     protected function casts(): array
     {
         return [
             'email_verified_at' => 'datetime',
         ];
+    }
+
+    public function fullName(): Attribute
+    {
+        return Attribute::make(
+            get: fn(): string => collect([$this->first_name, $this->middle_name, $this->last_name])->filter()->implode(' '),
+        );
     }
 
     public function sendEmailVerification()

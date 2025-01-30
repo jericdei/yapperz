@@ -10,4 +10,6 @@ export interface User {
   deleted_at: string | null
   created_at: string | null
   updated_at: string | null
+  // mutators
+  full_name: string
 }

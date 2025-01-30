@@ -1,13 +1,8 @@
 import { User } from '@/types/models';
 
-export type RegisterUser = Omit<
+export type RegisterUser = Pick<
   User,
-  | 'id'
-  | 'created_at'
-  | 'updated_at'
-  | 'email_verified_at'
-  | 'remember_token'
-  | 'deleted_at'
+  'first_name' | 'middle_name' | 'last_name' | 'email'
 >;
 
 export type LoginUser = Pick<User, 'email'>;

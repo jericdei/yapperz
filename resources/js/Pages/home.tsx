@@ -1,21 +1,12 @@
-import { Button } from '@/components/ui/button';
-import { User } from '@/types/models';
-import { router } from '@inertiajs/react';
+import { useCurrentUser } from '@/hooks/auth';
+import AuthenticatedLayout from '@/layouts/authenticated';
 
-interface HomePageProps {
-  user: User;
-}
-
-export default function HomePage({ user }: HomePageProps) {
-  const handleLogout = () => {
-    router.post(route('auth.logout'));
-  };
+export default function HomePage() {
+  const user = useCurrentUser();
 
   return (
-    <div>
-      <pre>{JSON.stringify(user, null, 2)}</pre>
-
-      <Button onClick={handleLogout}>Logout</Button>
-    </div>
+    <AuthenticatedLayout>
+      <p>Hi, {user.first_name}!</p>
+    </AuthenticatedLayout>
   );
 }
