@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Actions\GenerateAuthCodeAction;
+use App\Data\GenerateAuthCodeData;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -37,14 +38,13 @@ class User extends Authenticatable
         );
     }
 
+    /**
+     * Generate auth code and send email verification to the user.
+     */
     public function sendEmailVerification()
     {
         $action = app(GenerateAuthCodeAction::class);
-
-        $action([
-            'email' => $this->email,
-            'first_name' => $this->first_name,
-        ]);
+        $action(GenerateAuthCodeData::from($this));
     }
 
     public function hasPendingVerification(): bool
