@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "30c0f7585f8d2a0310dda73712308cc6",
+    "content-hash": "62ef304c84779375bed51255fa3c5d8c",
     "packages": [
         {
             "name": "brick/math",
@@ -6340,6 +6340,69 @@
                 }
             ],
             "time": "2025-01-25T12:00:00+00:00"
+        },
+        {
+            "name": "fumeapp/modeltyper",
+            "version": "v3.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fumeapp/modeltyper.git",
+                "reference": "9e03f3344bbac3e32006fc6959d30b347847d28c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fumeapp/modeltyper/zipball/9e03f3344bbac3e32006fc6959d30b347847d28c",
+                "reference": "9e03f3344bbac3e32006fc6959d30b347847d28c",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^11.33.0",
+                "illuminate/database": "^11.33.0",
+                "illuminate/support": "^11.33.0",
+                "php": "^8.2"
+            },
+            "conflict": {
+                "laravel/framework": "<11.33.0",
+                "nesbot/carbon": "<3.5.0"
+            },
+            "require-dev": {
+                "consolidation/robo": "^5.1.0",
+                "larastan/larastan": "^3.0.2",
+                "laravel/pint": "^1.18.3",
+                "orchestra/testbench": "^9.6.1",
+                "phpstan/phpstan-deprecation-rules": "^2.0.1",
+                "phpunit/phpunit": "^11.4.4",
+                "totten/lurkerlite": "^1.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "FumeApp\\ModelTyper\\ModelTyperServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "FumeApp\\ModelTyper\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "kevin olson",
+                    "email": "acidjazz@gmail.com"
+                }
+            ],
+            "description": "Generate TypeScript interfaces from Laravel Models",
+            "support": {
+                "issues": "https://github.com/fumeapp/modeltyper/issues",
+                "source": "https://github.com/fumeapp/modeltyper/tree/v3.0.1"
+            },
+            "time": "2024-12-16T16:58:38+00:00"
         },
         {
             "name": "hamcrest/hamcrest-php",
