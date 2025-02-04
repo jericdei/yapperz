@@ -1,14 +1,14 @@
 import { Avatar } from '@/components/ui/avatar';
-import { useCurrentUser } from '@/hooks/auth';
+import { User } from '@/types/models';
 import { AvatarFallback } from '@radix-ui/react-avatar';
 import { UserRoundIcon } from 'lucide-react';
 
-interface UserAvatarProps {}
+interface UserAvatarProps {
+  user: User;
+}
 
 // TODO: add user avatar
-export default function UserAvatar({}: UserAvatarProps) {
-  const user = useCurrentUser();
-
+export default function UserAvatar({ user }: UserAvatarProps) {
   return (
     <Avatar className="grid place-items-center bg-white">
       <AvatarFallback>

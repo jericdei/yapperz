@@ -1,6 +1,7 @@
 import MessagesMenu from '@/components/navigation/messages-menu';
 import NotificationMenu from '@/components/navigation/notification-menu';
 import UserMenu from '@/components/navigation/user-menu';
+import { Toaster } from '@/components/ui/toaster';
 import { useCurrentUser } from '@/hooks/auth';
 import { Head, Link } from '@inertiajs/react';
 import { PropsWithChildren } from 'react';
@@ -17,6 +18,7 @@ export default function AuthenticatedLayout({
 
   return (
     <>
+      <Toaster />
       <Head title={title} />
 
       <div className="flex flex-col gap-4">

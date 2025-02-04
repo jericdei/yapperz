@@ -1,4 +1,5 @@
 import { useCurrentUser } from '@/hooks/auth';
+import { useToast } from '@/hooks/use-toast';
 import { CreatePost as CreatePostSchema } from '@/types/schema';
 import { useForm } from '@inertiajs/react';
 import InertiaTextarea from './form/InertiaTextarea';
@@ -8,17 +9,28 @@ interface CreatePostProps {}
 
 export default function CreatePost({}: CreatePostProps) {
   const user = useCurrentUser();
+  const { toast } = useToast();
 
-  const { data, reset, setData } = useForm<CreatePostSchema>({
-    content: '',
-  });
+  const { data, post, reset, setData, errors, hasErrors } =
+    useForm<CreatePostSchema>({
+      content: '',
+    });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    console.log(data);
-
-    reset();
+    post(route('posts.store', { user: user.id }), {
+      onFinish: () => reset(),
+      onError: (error) => {
+        if ('content' in error) {
+          toast({
+            title: 'Error',
+            description: error.content,
+            variant: 'destructive',
+          });
+        }
+      },
+    });
   };
 
   return (

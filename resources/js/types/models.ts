@@ -1,3 +1,16 @@
+export interface Post {
+  // columns
+  id: string
+  user_id: string | null
+  content: string
+  like_count: number
+  deleted_at: string | null
+  created_at: string | null
+  updated_at: string | null
+  // relations
+  user: User
+}
+
 export interface User {
   // columns
   id: string
@@ -12,4 +25,6 @@ export interface User {
   updated_at: string | null
   // mutators
   full_name: string
+  // relations
+  posts: Post[]
 }

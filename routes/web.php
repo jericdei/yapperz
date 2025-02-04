@@ -1,9 +1,10 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', fn(Request $request) => $request->user() ? inertia('home', ['user' => $request->user()]) : to_route('auth.login'))
-    ->name('home');
+Route::get('/', HomeController::class)->name('home');
 
 require __DIR__ . '/auth.php';
+require __DIR__ . '/post.php';
+require __DIR__ . '/user.php';
