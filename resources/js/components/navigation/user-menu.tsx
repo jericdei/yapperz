@@ -21,7 +21,7 @@ export default function UserMenu({ user }: UserMenuProps) {
         </Button>
       </PopoverTrigger>
 
-      <PopoverContent>
+      <PopoverContent align="end">
         <div className="flex flex-col items-center gap-4">
           <div>
             <p className="font-medium">{user.full_name}</p>

@@ -2,7 +2,7 @@ import InertiaInput from '@/components/form/InertiaInput';
 import { Button } from '@/components/ui/button';
 import GuestLayout from '@/layouts/guest';
 import { RegisterUser } from '@/types/user';
-import { useForm } from '@inertiajs/react';
+import { Link, useForm } from '@inertiajs/react';
 
 export default function RegisterPage() {
   const { data, setData, post, errors } = useForm<RegisterUser>({
@@ -63,6 +63,13 @@ export default function RegisterPage() {
             <Button>Continue</Button>
           </div>
         </form>
+
+        <div className="flex items-center gap-2">
+          <p>Already have an account?</p>
+          <Link className="underline" href={route('auth.login')}>
+            {' Login'}
+          </Link>
+        </div>
       </div>
     </GuestLayout>
   );

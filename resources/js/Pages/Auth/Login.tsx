@@ -36,8 +36,7 @@ export default function LoginPage() {
         <div className="flex items-center gap-2">
           <p>Don't have an account?</p>
           <Link className="underline" href={route('auth.register')}>
-            {' '}
-            Sign up
+            {' Sign up'}
           </Link>
         </div>
       </div>
