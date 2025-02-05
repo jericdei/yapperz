@@ -5,8 +5,8 @@ A fully featured social media application.
 ## TODO Features
 
 - [x] Auth
-- [ ] Post management
-- [ ] Profile management
+- [x] Post management
+- [x] Profile management
 - [ ] Post comments, likes, replies
 - [ ] Friends management
 - [ ] Real-time notifications
