@@ -4,18 +4,15 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
-import { BellIcon } from 'lucide-react';
+import { Bell } from 'lucide-react';
 
 export default function NotificationMenu() {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button
-          variant="ghost"
-          className="aspect-square w-full cursor-pointer rounded-full bg-neutral-600 p-2 hover:bg-neutral-700"
-          asChild
-        >
-          <BellIcon />
+        <Button variant="ghost" size="icon" className="mr-2">
+          <Bell className="h-5 w-5" />
+          <span className="sr-only">Notifications</span>
         </Button>
       </PopoverTrigger>
 

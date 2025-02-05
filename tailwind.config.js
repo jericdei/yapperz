@@ -62,7 +62,7 @@ export default {
         sm: 'calc(var(--radius) - 4px)',
       },
       fontFamily: {
-        sans: ['Lato', ...fontFamily.sans],
+        sans: ['Mona Sans Variable', ...fontFamily.sans],
       },
       keyframes: {
         'accordion-down': {

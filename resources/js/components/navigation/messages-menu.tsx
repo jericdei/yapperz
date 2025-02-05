@@ -4,18 +4,15 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
-import { MessagesSquareIcon } from 'lucide-react';
+import { MessageCircle } from 'lucide-react';
 
 export default function MessagesMenu() {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button
-          variant="ghost"
-          className="aspect-square w-full cursor-pointer rounded-full bg-neutral-600 p-2 hover:bg-neutral-700"
-          asChild
-        >
-          <MessagesSquareIcon />
+        <Button variant="ghost" size="icon" className="mr-2">
+          <MessageCircle className="h-5 w-5" />
+          <span className="sr-only">Messages</span>
         </Button>
       </PopoverTrigger>
 

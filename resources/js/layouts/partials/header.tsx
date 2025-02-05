@@ -1,10 +1,10 @@
 import { ModeToggle } from '@/components/mode-toggle';
+import MessagesMenu from '@/components/navigation/messages-menu';
+import NotificationMenu from '@/components/navigation/notification-menu';
 import UserMenu from '@/components/navigation/user-menu';
-import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useCurrentUser } from '@/hooks/auth';
 import { Link } from '@inertiajs/react';
-import { Bell, MessageCircle } from 'lucide-react';
 
 export default function Header() {
   const user = useCurrentUser();
@@ -46,16 +46,8 @@ export default function Header() {
           </div>
 
           <nav className="flex items-center">
-            <Button variant="ghost" size="icon" className="mr-2">
-              <MessageCircle className="h-5 w-5" />
-              <span className="sr-only">Messages</span>
-            </Button>
-
-            <Button variant="ghost" size="icon" className="mr-2">
-              <Bell className="h-5 w-5" />
-              <span className="sr-only">Notifications</span>
-            </Button>
-
+            <MessagesMenu />
+            <NotificationMenu />
             <ModeToggle />
           </nav>
         </div>
