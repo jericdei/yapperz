@@ -8,4 +8,10 @@ export type PageProps<
     user: User;
   };
   ziggy: Config & { location: string };
+  session: {
+    toast: {
+      type: 'success' | 'error' | 'warning' | 'info';
+      message: string;
+    } | null;
+  };
 };

@@ -3,8 +3,9 @@ import NotificationMenu from '@/components/navigation/notification-menu';
 import UserMenu from '@/components/navigation/user-menu';
 import { Toaster } from '@/components/ui/toaster';
 import { useCurrentUser } from '@/hooks/auth';
-import { Head, Link } from '@inertiajs/react';
-import { PropsWithChildren } from 'react';
+import { useToast } from '@/hooks/use-toast';
+import { Head, Link, usePage } from '@inertiajs/react';
+import { PropsWithChildren, useEffect } from 'react';
 
 interface AuthenticatedLayoutProps extends PropsWithChildren {
   title?: string;
@@ -15,6 +16,22 @@ export default function AuthenticatedLayout({
   children,
 }: AuthenticatedLayoutProps) {
   const user = useCurrentUser();
+  const { toast } = useToast();
+  const { props } = usePage();
+
+  useEffect(() => {
+    if (props.session.toast) {
+      toast({
+        title: props.session.toast.type === 'success' ? 'Success!' : 'Error!',
+        description: props.session.toast.message,
+        variant:
+          props.session.toast.type === 'success' ? 'default' : 'destructive',
+        duration: 1000,
+      });
+
+      props.session.toast = null;
+    }
+  }, [props.session.toast]);
 
   return (
     <>

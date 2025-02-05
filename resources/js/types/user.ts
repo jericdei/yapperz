@@ -11,3 +11,5 @@ export interface ValidateUser extends Record<string, string> {
   email: string;
   code: string;
 }
+
+export interface EditUserProfile extends RegisterUser {}
