@@ -17,6 +17,9 @@ class PostController extends Controller
             'content' => $request->input('content'),
         ]);
 
-        return back()->with('success', 'Post created successfully.');
+        return back()->with('toast', [
+            'type' => 'success',
+            'message' => 'Post created successfully!',
+        ]);
     }
 }

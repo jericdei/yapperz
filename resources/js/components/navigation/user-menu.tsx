@@ -18,8 +18,9 @@ export default function UserMenu({ user }: UserMenuProps) {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant="ghost" className="cursor-pointer">
+        <Button variant="ghost" size="icon">
           <UserAvatar user={user} />
+          <span className="sr-only">Profile</span>
         </Button>
       </PopoverTrigger>
 

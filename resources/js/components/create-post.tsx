@@ -1,9 +1,10 @@
+import InertiaTextarea from '@/components/form/InertiaTextarea';
+import { Button } from '@/components/ui/button';
+import { Card, CardFooter, CardHeader } from '@/components/ui/card';
 import { useCurrentUser } from '@/hooks/auth';
 import { useToast } from '@/hooks/use-toast';
 import { CreatePost as CreatePostSchema } from '@/types/schema';
 import { useForm } from '@inertiajs/react';
-import InertiaTextarea from './form/InertiaTextarea';
-import { Button } from './ui/button';
 
 interface CreatePostProps {}
 
@@ -35,16 +36,20 @@ export default function CreatePost({}: CreatePostProps) {
 
   return (
     <form onSubmit={handleSubmit} className="w-full">
-      <div className="flex h-12 w-full items-stretch gap-2">
-        <InertiaTextarea<CreatePostSchema>
-          name="content"
-          placeholder={`What's on your mind, ${user.first_name}?`}
-          value={data.content}
-          setData={setData}
-        />
+      <Card>
+        <CardHeader>
+          <InertiaTextarea<CreatePostSchema>
+            name="content"
+            placeholder={`What's on your mind, ${user.first_name}?`}
+            value={data.content}
+            setData={setData}
+          />
+        </CardHeader>
 
-        <Button className="h-14">Post</Button>
-      </div>
+        <CardFooter>
+          <Button>Post</Button>
+        </CardFooter>
+      </Card>
     </form>
   );
 }

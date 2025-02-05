@@ -33,7 +33,7 @@ export default function PostCard({ post }: PostProps) {
   };
 
   return (
-    <Card className="mx-auto w-full max-w-xl bg-white dark:bg-neutral-800">
+    <Card className="mx-auto w-full">
       <CardHeader className="flex flex-row items-center gap-4">
         <UserAvatar user={post.user} />
         <div className="flex flex-col">
