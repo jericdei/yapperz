@@ -16,8 +16,10 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('middle_name')->nullable();
             $table->string('last_name');
+            $table->string('username')->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->boolean('is_private')->default(false);
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();

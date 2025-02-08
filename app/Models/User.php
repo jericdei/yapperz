@@ -7,9 +7,11 @@ use App\Data\GenerateAuthCodeData;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 
 class User extends Authenticatable
@@ -56,5 +58,33 @@ class User extends Authenticatable
     public function posts(): HasMany
     {
         return $this->hasMany(Post::class);
+    }
+
+    public function friends(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'friends', 'user_id', 'friend_id');
+    }
+
+    public function acceptedFriends(): BelongsToMany
+    {
+        return $this->friends()->wherePivot('accepted', true);
+    }
+
+    public function friendRequests(): BelongsToMany
+    {
+        return $this->friends()->wherePivot('accepted', false);
+    }
+
+    public function isFriendRequestSent(): Attribute
+    {
+        /** @var User|null */
+        $user = Auth::user();
+
+        return Attribute::make(
+            get: fn(): bool => $user?->friendRequests()
+                ->getQuery()
+                ->where('friend_id', $this->id)
+                ->exists()
+        );
     }
 }

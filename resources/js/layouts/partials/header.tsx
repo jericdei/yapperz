@@ -1,4 +1,5 @@
 import { ModeToggle } from '@/components/mode-toggle';
+import HeaderNavLink from '@/components/navigation/header-link';
 import MessagesMenu from '@/components/navigation/messages-menu';
 import NotificationMenu from '@/components/navigation/notification-menu';
 import UserMenu from '@/components/navigation/user-menu';
@@ -21,18 +22,8 @@ export default function Header() {
           </Link>
 
           <nav className="flex items-center space-x-6 text-sm font-medium">
-            <Link
-              className="text-foreground/60 transition-colors hover:text-foreground/80"
-              href="/"
-            >
-              Home
-            </Link>
-            <Link
-              className="text-foreground/60 transition-colors hover:text-foreground/80"
-              href="/friends"
-            >
-              Friends
-            </Link>
+            <HeaderNavLink routeName="home">Home</HeaderNavLink>
+            <HeaderNavLink routeName="friends.index">Friends</HeaderNavLink>
           </nav>
         </div>
 

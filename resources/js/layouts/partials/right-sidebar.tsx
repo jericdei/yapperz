@@ -1,12 +1,12 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 
 export default function RightSidebar() {
   const contacts = [
-    { name: 'Alice Johnson', avatar: '/placeholder.svg?height=32&width=32' },
-    { name: 'Bob Smith', avatar: '/placeholder.svg?height=32&width=32' },
-    { name: 'Charlie Brown', avatar: '/placeholder.svg?height=32&width=32' },
-    { name: 'David Lee', avatar: '/placeholder.svg?height=32&width=32' },
-    { name: 'Emma Davis', avatar: '/placeholder.svg?height=32&width=32' },
+    { name: 'Alice Johnson' },
+    { name: 'Bob Smith' },
+    { name: 'Charlie Brown' },
+    { name: 'David Lee' },
+    { name: 'Emma Davis' },
   ];
 
   return (
@@ -19,7 +19,6 @@ export default function RightSidebar() {
             className="flex items-center space-x-2 rounded-md p-2 transition-colors hover:bg-accent hover:text-accent-foreground"
           >
             <Avatar className="h-8 w-8">
-              <AvatarImage src={contact.avatar} alt={contact.name} />
               <AvatarFallback>{contact.name[0]}</AvatarFallback>
             </Avatar>
             <span className="text-sm">{contact.name}</span>
