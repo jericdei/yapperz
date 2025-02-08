@@ -15,8 +15,7 @@ class FriendController extends Controller
         $userSelect = ['id', 'email', 'username', 'first_name', 'middle_name', 'last_name'];
 
         $friends = $user->acceptedFriends()
-            ->with("user:" . implode(',', $userSelect))
-            ->get(['id', 'user_id']);
+            ->get($userSelect);
 
         $mayKnow = User::query()
             ->whereIsPrivate(false)

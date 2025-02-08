@@ -1,7 +1,7 @@
 <?php
 
 return [
-  /*
+    /*
     |--------------------------------------------------------------------------
     | Run After Migrate
     |--------------------------------------------------------------------------
@@ -12,9 +12,9 @@ return [
     |
     | Requires output-file set to true
     */
-  'run-after-migrate' => true,
+    'run-after-migrate' => true,
 
-  /*
+    /*
     |--------------------------------------------------------------------------
     | Output TypeScript Definitions to a File
     |--------------------------------------------------------------------------
@@ -22,9 +22,9 @@ return [
     | Specifies whether to output the TypeScript definitions to a file. If set
     | to true, the definitions will be saved to the specified file path.
     */
-  'output-file' => true,
+    'output-file' => true,
 
-  /*
+    /*
     |--------------------------------------------------------------------------
     | Path for Output TypeScript Definitions File
     |--------------------------------------------------------------------------
@@ -33,9 +33,9 @@ return [
     |
     | Requires output-file set to true
     */
-  'output-file-path' => './resources/js/types/models.ts',
+    'output-file-path' => './resources/js/types/models.ts',
 
-  /*
+    /*
     |--------------------------------------------------------------------------
     | Generate TypeScript Interfaces in a Global Namespace
     |--------------------------------------------------------------------------
@@ -46,9 +46,9 @@ return [
     |
     | Uses config 'global-namespace' as Namespace
     */
-  'global' => false,
+    'global' => false,
 
-  /*
+    /*
     |--------------------------------------------------------------------------
     | Global Namespace Name for TypeScript Interfaces
     |--------------------------------------------------------------------------
@@ -59,9 +59,9 @@ return [
     |
     | Requires global set to true
     */
-  'global-namespace' => 'models',
+    'global-namespace' => 'models',
 
-  /*
+    /*
     |--------------------------------------------------------------------------
     | Output the Result in JSON Format
     |--------------------------------------------------------------------------
@@ -69,9 +69,9 @@ return [
     | Specifies whether to output the TypeScript definitions in JSON format. This
     | can be useful for further processing or integration with other tools.
     */
-  'json' => false,
+    'json' => false,
 
-  /*
+    /*
     |--------------------------------------------------------------------------
     | Use TypeScript Enums Instead of Object Literals
     |--------------------------------------------------------------------------
@@ -80,9 +80,9 @@ return [
     | representing certain data structures. Enums provide a more type-safe and
     | expressive way to define sets of related constants.
     */
-  'use-enums' => false,
+    'use-enums' => false,
 
-  /*
+    /*
     |--------------------------------------------------------------------------
     | Output Plural Form for Models
     |--------------------------------------------------------------------------
@@ -92,9 +92,9 @@ return [
     |
     | Uses Laravel Pluralizer
     */
-  'plurals' => false,
+    'plurals' => false,
 
-  /*
+    /*
     |--------------------------------------------------------------------------
     | Exclude Model Relationships
     |--------------------------------------------------------------------------
@@ -103,9 +103,9 @@ return [
     | definitions. This can be useful if relationships are not needed in the
     | TypeScript codebase.
     */
-  'no-relations' => false,
+    'no-relations' => false,
 
-  /*
+    /*
     |--------------------------------------------------------------------------
     | Make Model Relationships Optional
     |--------------------------------------------------------------------------
@@ -114,9 +114,9 @@ return [
     | definitions. This allows for more flexibility in handling models that may
     | or may not have related data.
     */
-  'optional-relations' => false,
+    'optional-relations' => true,
 
-  /*
+    /*
     |--------------------------------------------------------------------------
     | Exclude Hidden Model Attributes
     |--------------------------------------------------------------------------
@@ -125,9 +125,9 @@ return [
     | definitions. Hidden attributes are typically not needed in the client-side
     | code.
     */
-  'no-hidden' => false,
+    'no-hidden' => false,
 
-  /*
+    /*
     |--------------------------------------------------------------------------
     | Output Timestamps as Date Object Types
     |--------------------------------------------------------------------------
@@ -136,9 +136,9 @@ return [
     | for more accurate and type-safe handling of date and time values in the
     | TypeScript code.
     */
-  'timestamps-date' => false,
+    'timestamps-date' => false,
 
-  /*
+    /*
     |--------------------------------------------------------------------------
     | Make Nullable Attributes Optional
     |--------------------------------------------------------------------------
@@ -147,18 +147,18 @@ return [
     | definitions. This provides better handling of attributes that may not have
     | a value.
     */
-  'optional-nullables' => false,
+    'optional-nullables' => false,
 
-  /*
+    /*
     |--------------------------------------------------------------------------
     | Output api.MetApi Interfaces
     |--------------------------------------------------------------------------
     |
     | Specifies whether to output TypeScript interfaces for api.MetApi resources.
     */
-  'api-resources' => false,
+    'api-resources' => false,
 
-  /*
+    /*
     |--------------------------------------------------------------------------
     | Output Fillable Model Attributes
     |--------------------------------------------------------------------------
@@ -166,9 +166,9 @@ return [
     | Specifies whether to output fillable model attributes in the TypeScript
     | definitions. Fillable attributes are those that can be mass-assigned.
     */
-  'fillables' => false,
+    'fillables' => false,
 
-  /*
+    /*
     |--------------------------------------------------------------------------
     | Suffix for Fillable Model Attributes
     |--------------------------------------------------------------------------
@@ -179,9 +179,9 @@ return [
     |
     | Requires fillables set to true
     */
-  'fillable-suffix' => 'fillable',
+    'fillable-suffix' => 'fillable',
 
-  /*
+    /*
     |--------------------------------------------------------------------------
     | Override or Add New Type Mappings
     |--------------------------------------------------------------------------
@@ -197,11 +197,11 @@ return [
     | 'point' => 'CustomPointInterface',
     | 'year' => 'string',
     */
-  'custom_mappings' => [
-    // 'binary' => 'Blob',
-  ],
+    'custom_mappings' => [
+        // 'binary' => 'Blob',
+    ],
 
-  /*
+    /*
     |--------------------------------------------------------------------------
     | Define Custom Relationships
     |--------------------------------------------------------------------------
@@ -218,13 +218,13 @@ return [
     |       'belongsToThrough',
     |   ],
     */
-  'custom_relationships' => [
-    'singular' => [
-      // 'belongsToThrough',
-    ],
+    'custom_relationships' => [
+        'singular' => [
+            // 'belongsToThrough',
+        ],
 
-    'plural' => [
-      //
+        'plural' => [
+            //
+        ],
     ],
-  ],
 ];

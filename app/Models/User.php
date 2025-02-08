@@ -11,13 +11,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, SoftDeletes, HasUlids;
+    use HasFactory, SoftDeletes, HasUlids, Notifiable;
 
     protected $guarded = ['id'];
 
@@ -27,11 +28,26 @@ class User extends Authenticatable
 
     protected $appends = ['full_name'];
 
+    public array $interfaces = [
+        'notifications' => [
+            'import' => '@/types/notification',
+            'type' => 'DatabaseNotifications',
+        ]
+    ];
+
     protected function casts(): array
     {
         return [
             'email_verified_at' => 'datetime',
         ];
+    }
+
+    /**
+     * The channels the user receives notification broadcasts on.
+     */
+    public function receiveBroadcastNotificationsOn(): string
+    {
+        return 'App.Models.User.' . $this->id;
     }
 
     public function fullName(): Attribute
@@ -62,7 +78,9 @@ class User extends Authenticatable
 
     public function friends(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'friends', 'user_id', 'friend_id');
+        return $this->belongsToMany(User::class, 'friends', 'user_id', 'friend_id')
+            ->withPivot('accepted')
+            ->withTimestamps();
     }
 
     public function acceptedFriends(): BelongsToMany

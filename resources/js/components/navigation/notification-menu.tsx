@@ -4,9 +4,20 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
+import {
+  useGetNotifications,
+  useReceiveNotification,
+} from '@/hooks/notification';
 import { Bell } from 'lucide-react';
+import NotificationCard from '../notification-card';
 
 export default function NotificationMenu() {
+  const { data: notifications, refetch } = useGetNotifications();
+
+  useReceiveNotification(() => {
+    refetch();
+  });
+
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -16,8 +27,19 @@ export default function NotificationMenu() {
         </Button>
       </PopoverTrigger>
 
-      <PopoverContent align="end">
-        <pre>Your notifications</pre>
+      <PopoverContent align="end" className="w-96">
+        <div className="space-y-4">
+          <h3>Notifications</h3>
+
+          {/* <pre>{JSON.stringify(notifications, null, 2)}</pre> */}
+
+          {notifications?.map((notification) => (
+            <NotificationCard
+              key={notification?.id}
+              notification={notification}
+            />
+          ))}
+        </div>
       </PopoverContent>
     </Popover>
   );

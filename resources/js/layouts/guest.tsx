@@ -12,7 +12,7 @@ export default function GuestLayout({ children, title }: GuestLayoutProps) {
       <Head title={title} />
 
       <section className="flex h-screen flex-col items-center justify-center">
-        <div className="w-1/4 p-16">{children}</div>
+        <div className="w-1/2 p-16 md:w-1/3">{children}</div>
       </section>
     </MainLayout>
   );

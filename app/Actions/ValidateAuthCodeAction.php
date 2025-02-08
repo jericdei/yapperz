@@ -9,8 +9,12 @@ final class ValidateAuthCodeAction
 {
     public function __invoke(ValidateAuthCodeData $data)
     {
+        if (app()->isLocal()) {
+            return true;
+        }
+
         $code = Cache::get("code_{$data->email}");
 
-        return $code && (string) $code === $data->code;
+        return ($code && (string) $code === $data->code);
     }
 }

@@ -4,7 +4,7 @@ import { AvatarFallback } from '@radix-ui/react-avatar';
 import { UserRoundIcon } from 'lucide-react';
 
 interface UserAvatarProps {
-  user: User;
+  user?: User;
 }
 
 // TODO: add user avatar

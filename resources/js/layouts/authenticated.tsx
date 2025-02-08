@@ -1,5 +1,5 @@
 import { Toaster } from '@/components/ui/toaster';
-import { useCurrentUser } from '@/hooks/auth';
+import { useReceiveNotification } from '@/hooks/notification';
 import { useToast } from '@/hooks/use-toast';
 import MainLayout from '@/layouts/main';
 import Header from '@/layouts/partials/header';
@@ -16,9 +16,14 @@ export default function AuthenticatedLayout({
   title,
   children,
 }: AuthenticatedLayoutProps) {
-  const user = useCurrentUser();
   const { toast } = useToast();
   const { props } = usePage();
+
+  useReceiveNotification((notification) => {
+    toast({
+      description: notification.message,
+    });
+  });
 
   useEffect(() => {
     if (props.session.toast) {

@@ -1,16 +1,4 @@
-export interface Notification {
-  // columns
-  id: number
-  user_id: string
-  from_user_id: string
-  type: string
-  content: string
-  read: boolean
-  deleted_at: string | null
-  created_at: string | null
-  updated_at: string | null
-}
-
+import { DatabaseNotifications } from '@/types/notification'
 export interface Post {
   // columns
   id: string
@@ -21,7 +9,7 @@ export interface Post {
   created_at: string | null
   updated_at: string | null
   // relations
-  user: User
+  user?: User
 }
 
 export interface User {
@@ -41,9 +29,11 @@ export interface User {
   // mutators
   full_name: string
   is_friend_request_sent: boolean
+  // overrides
+  notifications: DatabaseNotifications
   // relations
-  posts: Post[]
-  friends: User[]
-  accepted_friends: User[]
-  friend_requests: User[]
+  posts?: Post[]
+  friends?: User[]
+  accepted_friends?: User[]
+  friend_requests?: User[]
 }
